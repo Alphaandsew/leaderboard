@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deck.name %>
+</p>
+
+<p>
+  <strong>Pilot:</strong>
+  <%= @deck.pilot %>
+</p>
+
+<p>
+  <strong>Solo score:</strong>
+  <%= @deck.solo_score %>
+</p>
+
+<p>
+  <strong>Group score:</strong>
+  <%= @deck.group_score %>
+</p>
+
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>
