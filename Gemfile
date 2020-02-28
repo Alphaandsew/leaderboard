@@ -13,6 +13,8 @@ group :development, :test do
  group :production do
    gem 'pg'
  end
+#use gon
+gem 'gon'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

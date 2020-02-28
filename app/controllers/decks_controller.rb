@@ -4,7 +4,8 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.all
+    @decks = Deck.all.order('solo_score DESC')
+    gon.decks = @decks
   end
 
   # GET /decks/1
