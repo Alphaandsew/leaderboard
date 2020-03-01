@@ -13,12 +13,14 @@ html,body{
     background: black;
     color: #eee;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 a{
     color: #eee;
 }
 .leaderboard h1{
     color: #333;
+    margin: 0;
 }
 .leaderboard{
     min-height: 80%;
@@ -43,7 +45,7 @@ a{
     display: grid;
     gap: 1em;
     padding: 0 1em;
-    grid-template-columns: repeat(auto-fit,minmax(auto,200px));
+    grid-template-columns: repeat(auto-fit,minmax(auto,110px));
 }
 .deck-element{
     background: #333;
