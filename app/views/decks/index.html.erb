@@ -1,32 +1,51 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Leaderboard</h1>
+<%= link_to "Create New Deck", new_deck_path %>
+<%
+  tiers = {
+    "S" => [],
+    "A" => [],
+    "B" => [],
+    "C" => [],
+    "D" => [],
+    "E" => [],
+    "F" => []
+  }
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Pilot</th>
-      <th>Solo score</th>
-      <th>Group score</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @decks.each do |deck| %>
-      <tr>
-        <td><%= deck.name %></td>
-        <td><%= deck.pilot %></td>
-        <td><%= deck.solo_score %></td>
-        <td><%= deck.group_score %></td>
-        <td><%= link_to 'Show', deck %></td>
-        <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Deck', new_deck_path %>
+  @decks.each do |deck|
+    case deck.solo_score
+    when 0..150
+      tiers["F"].append(deck);
+    when 151..250
+      tiers["E"].append(deck);
+    when 251..350
+      tiers["D"].append(deck);
+    when 351..450
+      tiers["C"].append(deck);
+    when 451..550
+      tiers["B"].append(deck);
+    when 551..650
+      tiers["A"].append(deck);
+    else
+      tiers["S"].append(deck);
+    end
+  end
+%><div class="leaderboard">
+<% tiers.each do |tier,decks| %>
+  <div class="tier tier-<%=tier%>">
+    <div class="name">
+      <h1><%=tier%></h1>
+    </div>
+    <div class="decks">
+      <% decks.each do |deck| %>
+        <div class="deck-element">
+          <div>
+            <%= link_to deck.name, deck %>
+            <p><%= deck.pilot %></p>
+          </div>
+        </div> 
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>
